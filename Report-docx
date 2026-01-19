@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class StudentResult {
+
+    static char getGrade(int marks) {
+        if (marks >= 90) return 'A';
+        else if (marks >= 75) return 'B';
+        else if (marks >= 60) return 'C';
+        else if (marks >= 40) return 'D';
+        else return 'F';
+    }
+
+    static void gradeRemark(char grade) {
+        switch (grade) {
+            case 'A': System.out.println("Excellent"); break;
+            case 'B': System.out.println("Very Good"); break;
+            case 'C': System.out.println("Good"); break;
+            case 'D': System.out.println("Pass"); break;
+            default: System.out.println("Fail");
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Enter marks (0-100) or -1 to exit: ");
+            int marks = sc.nextInt();
+
+            if (marks == -1) break;                 // break
+            if (marks < 0 || marks > 100) continue; // validation + continue
+
+            char grade = getGrade(marks);
+
+            System.out.printf("Percentage: %d%%\n", marks);
+            System.out.println("Grade: " + grade);
+            gradeRemark(grade);
+        }
+
+        sc.close();
+    }
+}
